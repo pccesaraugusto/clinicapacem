@@ -92,7 +92,7 @@ $next_month_link = "<a href=\"?month=".date('m',$iNextMonth)."&year=".date('Y',$
                                 $datetocheck = date("Y-m-d",strtotime($row['eventDate']));
                                  if($row['eventDate']>date("Y-m-d") && $spaces_left>0){
                                 $click = getOption('use_popup') ? "getLightbox2('" . $row['id'] . "'," . $row['serviceID'] . ",'".$datetocheck."');" :
-                                    "location.href='event-booking.php?eventID=" . urlencode($row['id']) . "&serviceID=" .  $row['serviceID'] . "&date=".$datetocheck."'";
+                                    "location.href='event-?eventID=" . urlencode($row['id']) . "&serviceID=" .  $row['serviceID'] . "&date=".$datetocheck."'";
                               }else{
                                   $click ="javascript:;";
 }?>

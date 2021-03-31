@@ -737,7 +737,7 @@ function getEventInfo($id) {
     return $t;
 }
 
-function getOrderSummery($orderId) {
+function getOrderSummery($orderId) { 
     $info = '';
 
     bw_apply_filter("pre_order_summery", $info, $orderId);
@@ -1957,6 +1957,7 @@ function payment_paypal($pre_text, $orderID, $type=null) {
     $paypal_form = $pre_text . TXT_FUNC_ALMOST_DONE;//($type==null?TXT_FUNC_ALMOST_DONE:"");
     if (IS_WP_PLUGIN == '1' && $type!='pay') {
         $paypal_form .= '<br><input type="button" value="'. TXT_FUNC_CLICK_HERE_TO_PAY .'" onclick="top.redirect(\'http://' . MAIN_URL . 'paypal.processing.php?orderID=' . $orderID . '\')">';
+        
     } else {
         //CREATE PAYPAL PROCESSING
         require_once(MAIN_PATH . '/includes/paypal.class.php');
@@ -1987,7 +1988,25 @@ function payment_paypal($pre_text, $orderID, $type=null) {
         foreach ($paypal->fields as $name => $value) {
             $paypal_form .= "<input type=\"hidden\" name=\"$name\" value=\"$value\"/>\n";
         }
-        $paypal_form .= "<input type=\"submit\" class=\"submitProcessing\" value=\"" . TXT_FUNC_CLICK_HERE_TO_PAY . "\"></center>\n";
+        $paypal_form .= '<center><h4>Escolha a sua forma de pagamento</h4></center>';
+        $paypal_form .= '<table style="width:100%" border="0">
+                            <tr align="center">
+                                <th><img src="./images/paypal-logo-2.svg" border="0" width="120" height="80" /></th>
+                                <th><img src="./images/pix-banco-central-logo.svg" border="0" width="150" height="90" /></th>
+                                <th><img src="./images/mercado-pago-logo.svg" border="0" width="120" height="80" /></th>
+                            </tr>
+                            <tr align="center">
+                                <td>
+                                   <input type="submit" class="ui-button ui-widget ui-corner-all" style="background-color:#39b54a; color:#FFFFFF;" value="' . TXT_FUNC_CLICK_HERE_TO_PAY . '"></center>
+                                </td>
+                                <td>
+                                    <input type="submit" class="ui-button ui-widget ui-corner-all" style="background-color:#39b54a; color:#FFFFFF;" formaction="pgtopix.php?orderID=' . $orderID . '" value="' . TXT_FUNC_CLICK_HERE_TO_PAY . '"></center>
+                                </td>
+                                <td>                                
+                                    <input type="submit" class="ui-button ui-widget ui-corner-all" style="background-color:#39b54a; color:#FFFFFF;" formaction="pgtomercadopago.php?orderID='. $orderID .'" value="' . TXT_FUNC_CLICK_HERE_TO_PAY . '"></center>
+                                </td>
+                            </tr>
+                        </table>';
         $paypal_form .= "</form>\n";
     }
     return $paypal_form;

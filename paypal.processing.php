@@ -28,7 +28,7 @@ $serviceID = (!empty($_POST["serviceID"]))?strip_tags(str_replace("'","`",$_POST
 <div style="width: 600px;margin: 20px auto">
 <?
     echo payment_paypal("Redirecting to PayPal",$orderID,'pay');
-    ?>
+?>
 </div>
 <script>
     $(function(){

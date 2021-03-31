@@ -1,0 +1,40 @@
+
+1 Você so precisa criar um banco vazio mysql
+2 Coloque os arquivos em sua hospedagem
+3 Abra o seu dominio pelo navegador, Exe:  seudominio.com/instal.php  ou se estiver dentro de uma basta, abra assim: seudominio.com/nomedapasta/instal.php
+_______________________________________________________________________________________________________________________
+
+4 Informe os dados do banco de dados que vc criou:
+
+
+Nome do banco de dados:
+
+Senha do banco de dados:
+
+Nome do host do banco de dados:
+
+Nome de Usuário do Banco de Dados:
+
+Caminho de diretório:
+
+________________________________________________________________________________________________________________________
+5 Essa parte aqui você pode deixar em branco: 
+
+Chave de licença: deixe em branco 
+
+Nome de usuário: deixe em branco
+
+Domínio autorizado: deixe em branco
+
+_________________________________________________________________________________________________________________________
+6 Para entrar no painel de controle, basta informar seu dominio e /admin.php
+
+Exe: seudominio.com/admin.php   se vc instalar dentro de uma pasta, ele fica assim: seudominio.com/nomedapasta/admin.php
+
+
+Usuário: admin
+
+Senha: pass
+
+
+Visite nosso site: https://aztecsistemas.com.br

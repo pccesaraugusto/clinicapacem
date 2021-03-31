@@ -1,7 +1,0 @@
-DirectoryIndex index.php
-
-AddDefaultCharset utf-8
-
-# php -- BEGIN cPanel-generated handler, do not edit
-# Este domínio herda o pacote “PHP”.
-# php -- END cPanel-generated handler, do not edit

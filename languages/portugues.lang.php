@@ -405,18 +405,37 @@
     define(TXT_MINUTES," minutos");
     define(TXT_AND," e ");
     define(TXT_HOURSS," hora(s)");
-    define(TXT_MINUTES_MIN," minutos mínimo; ");
+    define(TXT_MINUTES_MIN," minutos mínimo; "); 
     define(TXT_MIN," mínimo; ");
     define(TXT_SPOTS_LEFT,"lugares<br>restantes");
     define(TXT_FUNC_QTY,"Qtd.");
     define(TXT_FUNC_FREE,"GRÁTIS");
     define(TXT_FUNC_PAYMENT_FOR,"Pagamento de reserva");
     define(TXT_FUNC_PAYMNT_EVENT,"Pagamento de eventO");
-    define(TXT_FUNC_CLICK_HERE_TO_PAY,"Clique aqui para pagar para a reserva");
+    define(TXT_FUNC_CLICK_HERE_TO_PAY,"Pagar agora");
+    define(TXT_FUNC_CLICK_HERE_TO_PIX,"Pagar agora");
+    define(TXT_FUNC_CLICK_HERE_TO_MERCADO_PAGO,"Pagar agora");
     define(TXT_FUNC_THANK_YOU_MSG,"<p>Obrigado. Você receberá um e-mail de confirmação a respeito de sua reserva após administrador irá processá-lo.</p>");
     define(TXT_FUNC_ALMOST_DONE,"Está quase pronto. Há apenas uma coisa a fazer, O pagamento. Por favor, clique no botão abaixo e você será transferido para o PayPal.com para um pagamento rápido e seguro. Por favor, note que a sua reserva só será confirmada após o pagamento");
 
     #new messages in v5.2.1
     define(REPEAT_MSG,"Verifique se a sua data reservada é igual ao atual intervalo final recorrente. Por exemplo, se reserva recorrente deve terminar em 6 semanas a partir de agora, definir \"data para\" para \"hoje+6 semanas\"");
 
+    #definicoes da tela de configuracoes do pix
+    define(LB_COF_PIX_TITULO,"Realizar configurações do PIX");
+
+    #definicoes da tela de configuracoes do mercado pago
+    define(LB_COF_MERCADO_PAGO_TITULO,"Realizar configurações do Mercado Pago");
+    define(LB_COF_MERCADO_PAGO_HMG, "Informe abaixo os dados da área do <b>SandBox</b> - Homologação");
+    define(LB_COF_MERCADO_PAGO_PROD, "Informe abaixo os dados da área de <b>Produção</b>");
+    define(HMG_CRIENT_ID, "Client Id");
+    define(HMG_CRIENT_SECRET, "Client Secret");
+    define(HMG_PUBLIC_KEY, "Public Key");
+    define(HMG_ACCESS_TOKEN, "Access Token");
+    define(BTN_SALVAR_DADOS_HMG, "Salvar Homologação");
+    define(PROD_CRIENT_ID, "Client Id");
+    define(PROD_CRIENT_SECRET, "Client Secret");
+    define(PROD_PUBLIC_KEY, "Public Key");
+    define(PROD_ACCESS_TOKEN, "Access Token");
+    define(BTN_SALVAR_DADOS_PROD, "Salvar Produção");
 ?>
