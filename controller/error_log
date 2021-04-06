@@ -1,0 +1,57 @@
+[03-Apr-2021 23:53:07 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Apr-2021 23:53:07 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[03-Apr-2021 23:53:08 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Apr-2021 23:53:08 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[03-Apr-2021 23:53:52 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Apr-2021 23:53:52 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[03-Apr-2021 23:56:34 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[03-Apr-2021 23:56:34 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[03-Apr-2021 23:56:34 America/Fortaleza] PHP Warning:  include(../config.phpconfig.php): failed to open stream: No such file or directory in /home1/collecti/clinicapacem.com.br/controller/PgtoMercadoPagoPaymentController.php on line 4
+[03-Apr-2021 23:56:34 America/Fortaleza] PHP Warning:  include(../config.phpconfig.php): failed to open stream: No such file or directory in /home1/collecti/clinicapacem.com.br/controller/PgtoMercadoPagoPaymentController.php on line 4
+[03-Apr-2021 23:56:34 America/Fortaleza] PHP Warning:  include(): Failed opening '../config.phpconfig.php' for inclusion (include_path='.:/opt/php56/lib/php') in /home1/collecti/clinicapacem.com.br/controller/PgtoMercadoPagoPaymentController.php on line 4
+[03-Apr-2021 23:56:34 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[03-Apr-2021 23:56:34 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:03:19 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:03:19 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:03:19 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:03:19 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:04:43 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:04:43 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:04:43 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:04:43 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:06:45 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:06:45 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:06:45 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:06:45 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:08:16 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:08:16 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:08:17 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:08:17 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:08:59 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:08:59 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:08:59 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:08:59 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:09:37 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:09:37 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:09:38 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:09:38 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:11:12 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:11:12 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:11:13 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:11:13 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:16:10 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:16:10 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:16:10 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:16:10 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:18:16 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:18:16 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:18:16 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:18:16 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:21:53 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:21:53 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:21:54 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:21:54 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[04-Apr-2021 00:39:06 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[04-Apr-2021 00:39:06 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[04-Apr-2021 00:39:06 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
+[04-Apr-2021 00:39:06 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}

@@ -162,4 +162,17 @@ function dump($el) {
     print "<pre>" . print_r($el, true) . "</pre>";
 }
 
+/**
+ * Data: 01/04/2021
+ * Tratando a mensagem de sucesso para ser exibida
+ * **/
+function tratarMsgSucesso($msg)
+{
+    $error_success = "<div class='message success'><div><img src='images/ok.png' height='22'></div><div class='cont'>";
+    $error_success .= "<br>" . $msg;
+    $error_success .= "</div><div style='clear:both;float:none'></div></div>";
+
+    return $error_success;
+}
+
 ?>

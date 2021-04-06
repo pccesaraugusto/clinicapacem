@@ -438,4 +438,13 @@
     define(PROD_PUBLIC_KEY, "Public Key");
     define(PROD_ACCESS_TOKEN, "Access Token");
     define(BTN_SALVAR_DADOS_PROD, "Salvar Produção");
+    define(SUCESS_MERCADO_PAGO_HMG, 'Atenção! Os dados da Homologação foram incluídos com sucesso.');
+    define(SUCESS_MERCADO_PAGO_PROD, 'Atenção! Os dados da Produção foram incluídos com sucesso.');
+    define(SELECT_PIX,"Pix");
+    define(SELECT_PAYPAL,"Paypal");
+    define(SELECT_MERCADO_PAGO,"Mercado Pago");
+    define(LB_OPCOES_SELECT, "Tipo de Pagamento");
+    define(BTN_LOCACLIZAR_DADOS_HMG, 'Ver Dados Cadastrados');
+    
+    
 ?>

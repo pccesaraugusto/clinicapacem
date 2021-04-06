@@ -1,0 +1,13 @@
+{
+    "name": "wf/mp",
+    "description": "Mercado Pago",
+    "authors": [
+        {
+            "name": "Paulo Augusto",
+            "email": "pccesaraugusto@gmail.com"
+        }
+    ],
+    "require": {
+        "mercadopago/dx-php": "1.9.0"
+    }
+}

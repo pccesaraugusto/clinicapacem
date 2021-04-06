@@ -16,6 +16,7 @@ $reqFields=array(
 	"name",
 	"phone",
 	"email",
+	"tipopgto",
 	"captcha"
 	
 );

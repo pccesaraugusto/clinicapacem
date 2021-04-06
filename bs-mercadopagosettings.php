@@ -12,7 +12,10 @@
   #
   #****************************************************************************** */
 ######################### DO NOT MODIFY (UNLESS SURE) ########################
-
+#tratando a session
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 
 require_once("includes/config.php"); //Load the configurations
 
@@ -23,110 +26,155 @@ if ($_SESSION["logged_in"] != true) {
     header("Location: admin.php");
 } else {
 
-    bw_do_action("bw_load");
-    bw_do_action("bw_admin");
-
-    //dump($BW_actions);
-    ######################### DO NOT MODIFY (UNLESS SURE) END ########################
-
-    $email = (!empty($_REQUEST["email"])) ? strip_tags(str_replace("'", "`", $_REQUEST["email"])) : '';
-    $pemail = (!empty($_REQUEST["pemail"])) ? strip_tags(str_replace("'", "`", $_REQUEST["pemail"])) : '';
-    $pcurrency = (!empty($_REQUEST["pcurrency"])) ? strip_tags(str_replace("'", "`", $_REQUEST["pcurrency"])) : '';
-    $currency = (!empty($_REQUEST["currency"])) ? strip_tags(str_replace("'", "`", $_REQUEST["currency"])) : '';
-    $currencyPos = (isset($_REQUEST["currencyPos"])) ? strip_tags(str_replace("'", "`", $_REQUEST["currencyPos"])) : 'a';
-
-    $tax = (!empty($_REQUEST["tax"])) ? strip_tags(str_replace("'", "`", $_REQUEST["tax"])) : '';
-    $enable_tax = (isset($_REQUEST["enable_tax"])) ? strip_tags(str_replace("'", "`", $_REQUEST["enable_tax"])) : '0';
-
-    $new_pass = (!empty($_REQUEST["new_pass"])) ? strip_tags(str_replace("'", "`", $_REQUEST["new_pass"])) : '';
-    $new_pass2 = (!empty($_REQUEST["new_pass2"])) ? strip_tags(str_replace("'", "`", $_REQUEST["new_pass2"])) : '';
-
-    $use_popup = (isset($_REQUEST["use_popup"])) ? strip_tags(str_replace("'", "`", $_REQUEST["use_popup"])) : '0';
-    $time_mode = (isset($_REQUEST["time_mode"])) ? strip_tags(str_replace("'", "`", $_REQUEST["time_mode"])) : 0;
-    $date_mode = (isset($_REQUEST["date_mode"])) ? strip_tags(str_replace("'", "`", $_REQUEST["date_mode"])) : '';
-
-    $lang = (!empty($_REQUEST["lang"])) ? strip_tags(str_replace("'", "`", $_REQUEST["lang"])) : '';
-
-    $langList = getLangList();
-
-
-
-
-
-    if (!empty($_REQUEST["edit_settings"]) && $_REQUEST["edit_settings"] == "yes") {
-
-
-        updateOption('email', $email);
-        updateOption('pemail', $pemail);
-        updateOption('pcurrency', $pcurrency);
-        updateOption('currency', htmlspecialchars($currency));
-        updateOption('tax', $tax);
-        updateOption('enable_tax', $enable_tax);
-        updateOption('time_mode', $time_mode);
-        updateOption('use_popup', $use_popup);
-        updateOption('lang', $lang);
-        updateOption('date_mode', $date_mode);
-        updateOption('currency_position', $currencyPos);
-        addMessage(MSG_SETSAVED, "success");
-
-
-        if (!empty($new_pass) && !empty($new_pass2)) {
-            if (md5($new_pass) == md5($new_pass2)) {
-
-                if ($demo) {
-                    $msg .= "<span style='color:#aa0000'>" . DEMO_PASS_MSG . "</span>";
-                } else {
-
-                    updateOption('password', md5($new_pass));
-                    addMessage(MSG_ADMPSCHG, "success");
-                    //$msg.="<span style='color:#00aa00'> Administrator password was changed!</span>";
-                }
-            } else {
-                addMessage(MSG_PSDNTMTCH, "warning");
-                $msg .= "<span style='color:#00aa00'>" . PASS_NOMATCH . "</span>";
-            }
-        }
-    }
-
-    //print $months;
-    $email = getOption('email');
-    $pemail = getOption('pemail');
-    $pcurrency = getOption('pcurrency');
-    $currency = getOption('currency');
-    $tax = getOption('tax');
-    $enable_tax = getOption('enable_tax');
-    $time_mode = getOption('time_mode');
-    $use_popup = getOption('use_popup');
-    $lang = getOption('lang');
-    $date_mode = getOption('date_mode');
-    $currencyPos = getOption('currency_position');
 ?>
     <?php include "includes/admin_header.php"; ?>
 
+    <style>
+        .link_pc {
+            background-color: #1c87c9;
+            border: none;
+            color: white;
+            padding: 8px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 80px;
+            border: 1px solid #888;
+            width: 70%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* The Close Button */
+        .fecharProd {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .fecharProd:hover,
+        .fecharProd:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
     <script type="text/javascript">
-        $(function() {
+        //-- funcao para verificar se os campos de homologacao foram preenchidos --//
+        function valida_form_homologacao() {
+            if (document.getElementById("hmg_client_id").value.length < 1) {
+                alert('Por favor, preencha o campo Client Id de Homologação.');
+                document.getElementById("hmg_client_id").focus();
+                return false
 
-            $('#enable_tax').bind('change', function() {
+            } else if (document.getElementById("hmg_client_secret").value.length < 1) {
+                alert('Por favor, preencha o campo Client Secret de Homologação.');
+                document.getElementById("hmg_client_secret").focus();
+                return false
 
-                if ($(this).is(':checked')) {
-                    $('#tax').show();
-                } else {
-                    $('#tax').hide();
-                }
-            })
-        });
+            } else if (document.getElementById("hmg_public_key").value.length < 1) {
+                alert('Por favor, preencha o campo Public Key de Homologação.');
+                document.getElementById("hmg_public_key").focus();
+                return false
 
-        function noAlpha(obj) {
-            reg = /[^0-9.,]/g;
-            obj.value = obj.value.replace(reg, "");
+            } else if (document.getElementById("hmg_access_token").value.length < 1) {
+                alert('Por favor, preencha o campo Access Token de Homologação.');
+                document.getElementById("hmg_access_token").focus();
+                return false
+
+            }
+        }
+
+        //-- funcao para verificar se os campos de producao foram preenchidos --//
+        function valida_form_producao() {
+            if (document.getElementById("prod_client_id").value.length < 1) {
+                alert('Por favor, preencha o campo Client Id de Produção.');
+                document.getElementById("prod_client_id").focus();
+                return false
+
+            } else if (document.getElementById("prod_client_secret").value.length < 1) {
+                alert('Por favor, preencha o campo Client Secret de Produção.');
+                document.getElementById("prod_client_secret").focus();
+                return false
+
+            } else if (document.getElementById("prod_public_key").value.length < 1) {
+                alert('Por favor, preencha o campo Public Key de Produção.');
+                document.getElementById("prod_public_key").focus();
+                return false
+
+            } else if (document.getElementById("prod_access_token").value.length < 1) {
+                alert('Por favor, preencha o campo Access Token de Produção.');
+                document.getElementById("prod_access_token").focus();
+                return false
+
+            }
         }
     </script>
+
     <div id="content">
 
+        <!-- Exibe msg para o usuário -->
+        <?php
+        if (isset($_SESSION['msgSucess'])) {
+            if (strlen($_SESSION['msgSucess']) >= 5) {
+                echo $_SESSION['msgSucess'];
 
-        <?php getMessages(); ?>
+                #limpa msg de sucesso
+                unset($_SESSION['msgSucess']);
+            }
+        }
+        ?>
+
         <div class="content_block">
-            <form action="bs-settings.php" enctype="multipart/form-data" method="post" name="ff1">
+            <form action="./controller/ManterMercadoPagoController.class.php" onsubmit="return valida_form_homologacao(this)" method="post" name="ff1">
                 <div class="s_center">
                     <hr />
                     <h2 align="center" style="background-color: #ADD8E6;"><?php echo LB_COF_MERCADO_PAGO_TITULO ?></h2>
@@ -192,16 +240,22 @@ if ($_SESSION["logged_in"] != true) {
 
                     <p align="center" style="color: red;">(*) - Campos de preenchimento obrigatório.</p>
 
-                    <table width="60%" border="0" align="center">
+                    <table width="80%" border="0" align="center">
                         <thead align="center">
                             <tr>
-                                <td width="40%">
-                                    <input type="submit" class="ui-button ui-widget ui-corner-all" style="background-color:#39b54a; color:#FFFFFF;" value="<?php echo BTN_SALVAR_DADOS_HMG ?>"></center>
+                                <td width="80%">
+                                    <input type="submit" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;" value="<?php echo BTN_SALVAR_DADOS_HMG ?>"></center>
+
+                                    <a href="#" id="myBtnHmg" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;"><?php echo BTN_LOCACLIZAR_DADOS_HMG; ?></a>
                                 </td>
                             </tr>
                         </thead>
                     </table><br /><br />
+                </div>
+            </form>
 
+            <form action="./controller/ManterMercadoPagoController.class.php" onsubmit="return valida_form_producao(this)" method="post" name="ff2">
+                <div class="s_center">
                     <hr />
                     <h2 align="center" style="font-size: 16px;"><?php echo LB_COF_MERCADO_PAGO_PROD ?></h2>
 
@@ -213,7 +267,7 @@ if ($_SESSION["logged_in"] != true) {
                                     &nbsp;&nbsp;<?php echo PROD_CRIENT_ID ?>
                                 </th>
                                 <td width="40%"><br />
-                                    &nbsp;<input type="text" name="hmg_client_id" id="hmg_client_id" style="width:400px;" value="" />
+                                    &nbsp;<input type="text" name="prod_client_id" id="prod_client_id" style="width:400px;" value="" />
                                     <strong style="color: red;">&nbsp;*</strong>
                                 </td>
                             </tr>
@@ -227,7 +281,7 @@ if ($_SESSION["logged_in"] != true) {
                                     &nbsp;&nbsp;<?php echo PROD_CRIENT_SECRET ?>
                                 </th>
                                 <td width="40%"><br />
-                                    &nbsp;<input type="text" name="hmg_client_secret" id="hmg_client_secret" style="width:400px;" value="" />
+                                    &nbsp;<input type="text" name="prod_client_secret" id="prod_client_secret" style="width:400px;" value="" />
                                     <strong style="color: red;">&nbsp;*</strong>
                                 </td>
                             </tr>
@@ -241,7 +295,7 @@ if ($_SESSION["logged_in"] != true) {
                                     &nbsp;&nbsp;<?php echo PROD_PUBLIC_KEY ?>
                                 </th>
                                 <td width="40%"><br />
-                                    &nbsp;<input type="text" name="hmg_public_key" id="hmg_public_key" style="width:400px;" value="" />
+                                    &nbsp;<input type="text" name="prod_public_key" id="prod_public_key" style="width:400px;" value="" />
                                     <strong style="color: red;">&nbsp;*</strong>
                                 </td>
                             </tr>
@@ -255,7 +309,7 @@ if ($_SESSION["logged_in"] != true) {
                                     &nbsp;&nbsp;<?php echo PROD_ACCESS_TOKEN ?>
                                 </th>
                                 <td width="40%"><br />
-                                    &nbsp;<input type="text" name="hmg_access_token" id="hmg_access_token" style="width:400px;" value="" />
+                                    &nbsp;<input type="text" name="prod_access_token" id="prod_access_token" style="width:400px;" value="" />
                                     <strong style="color: red;">&nbsp;*</strong>
                                 </td>
                             </tr>
@@ -264,11 +318,13 @@ if ($_SESSION["logged_in"] != true) {
 
                     <p align="center" style="color: red;">(*) - Campos de preenchimento obrigatório.</p>
 
-                    <table width="60%" border="0" align="center">
+                    <table width="80%" border="0" align="center">
                         <thead align="center">
                             <tr>
-                                <td width="40%">
-                                    <input type="submit" class="ui-button ui-widget ui-corner-all" style="background-color:#39b54a; color:#FFFFFF;" value="<?php echo BTN_SALVAR_DADOS_PROD ?>"></center>
+                                <td width="80%">
+                                    <input type="submit" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;" value="<?php echo BTN_SALVAR_DADOS_PROD ?>"></center>
+
+                                    <a href="#" id="myBtnProd" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;"><?php echo BTN_LOCACLIZAR_DADOS_HMG; ?></a>
                                 </td>
                             </tr>
                         </thead>
@@ -280,4 +336,131 @@ if ($_SESSION["logged_in"] != true) {
         </div>
 
         <?php include "includes/admin_footer.php"; ?>
-    <?php } ?>
+        <?php }
+
+    #localizar os dados ce hmg para exibir no modal
+    $sql = "SELECT a.id, a.hmg_access_token, a.hmg_client_id, a.hmg_client_secret, a.hmg_public_key 
+        FROM bs_settings_mercadopago_hmg as a 
+        WHERE id = (SELECT max(id) FROM bs_settings_mercadopago_hmg)";
+    $result = mysql_query($sql) or die("err: " . mysql_error() . $sql);
+
+    if (mysql_num_rows($result) > 0) {
+        while ($rr = mysql_fetch_assoc($result)) {
+        ?>
+
+            <!-- The Modal - SandBox - Homologacao-->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" style="color: red;">&times;</span>
+                    <h2 style="background-color: green; color: #FFFFFF;">Chaves Cadastradas na Homologação - SANDBOX</h2>
+                    <table>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Client Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong>&nbsp;<?php echo $rr['hmg_client_id']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Client Secret&nbsp;&nbsp;: </strong>&nbsp;<?php echo $rr['hmg_client_secret']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Public Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong>&nbsp;<?php echo $rr['hmg_public_key']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Access Token: </strong>&nbsp;<?php echo $rr['hmg_access_token']; ?></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+        <?php
+
+        }
+    }
+
+    #producao sql dados cadastrados
+    $sql = "SELECT a.id as id, a.prod_access_token, a.prod_client_id, a.prod_client_secret, a.prod_public_key 
+           FROM bs_settings_mercadopago_prod as a 
+           WHERE id = (SELECT max(id) FROM bs_settings_mercadopago_prod)";
+    $result = mysql_query($sql) or die("err: " . mysql_error() . $sql);
+    if (mysql_num_rows($result) > 0) {
+        while ($rr = mysql_fetch_assoc($result)) {
+
+        ?>
+
+            <!-- The Modal - SandBox - Producao-->
+            <div id="myModalProd" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="fecharProd" style="color: red;">&times;</span>
+                    <h2 style="background-color: green; color: #FFFFFF;">Chaves Cadastradas na Produção</h2>
+                    <table>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Client Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong>&nbsp;<?php echo $rr['prod_client_id']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Client Secret&nbsp;&nbsp;: </strong>&nbsp;<?php echo $rr['prod_client_secret']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Public Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </strong>&nbsp;<?php echo $rr['prod_public_key']; ?></td>
+                        </tr>
+                        <tr>
+                            <td><strong style="background-color: #ADD8E6;">Access Token: </strong>&nbsp;<?php echo $rr['prod_access_token']; ?></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+    <?php
+
+        }
+    }
+    ?>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        var modalProd = document.getElementById("myModalProd");
+
+        // Get the button that opens the modal
+        var btnHmg = document.getElementById("myBtnHmg");
+        var btnProd = document.getElementById("myBtnProd");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var spanProd = document.getElementsByClassName("fecharProd")[0];
+
+        // When the user clicks the button, open the modal 
+        btnHmg.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        btnProd.onclick = function() {
+            modalProd.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        spanProd.onclick = function() {
+            modalProd.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modalProd) {
+                modalProd.style.display = "none";
+            }
+        }
+    </script>
