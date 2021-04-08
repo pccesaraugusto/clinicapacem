@@ -418,17 +418,17 @@
     },
     {
         "name": "mercadopago/dx-php",
-        "version": "1.9.0",
-        "version_normalized": "1.9.0.0",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/mercadopago/dx-php.git",
-            "reference": "642e592f3817f673c065cf9f74758079aa0747e0"
+            "reference": "cb98165fdd4806d0b21a9ef1194b77f5abca31dc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mercadopago/dx-php/zipball/642e592f3817f673c065cf9f74758079aa0747e0",
-            "reference": "642e592f3817f673c065cf9f74758079aa0747e0",
+            "url": "https://api.github.com/repos/mercadopago/dx-php/zipball/cb98165fdd4806d0b21a9ef1194b77f5abca31dc",
+            "reference": "cb98165fdd4806d0b21a9ef1194b77f5abca31dc",
             "shasum": ""
         },
         "require": {
@@ -445,7 +445,7 @@
             "symfony/yaml": "~2.5",
             "vlucas/phpdotenv": "^2.5"
         },
-        "time": "2020-04-06T17:53:53+00:00",
+        "time": "2020-03-25T16:57:37+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

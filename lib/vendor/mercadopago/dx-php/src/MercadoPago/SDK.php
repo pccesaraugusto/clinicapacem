@@ -50,10 +50,6 @@ class SDK
       return self::$_config->get('ACCESS_TOKEN');
     }
 
-    public static function getCountryId(){
-        return self::$_config->get('COUNTRY_ID');
-    }
-
     public static function cleanCredentials(){
       if (self::$_config == null) {
         // do nothing

@@ -55,3 +55,6 @@
 [04-Apr-2021 00:39:06 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
 [04-Apr-2021 00:39:06 America/Fortaleza] {"message":"unknown_error","error":"","status":400,"cause":[]}
 [04-Apr-2021 00:39:06 America/Fortaleza] {"message":"Malformed access_token: ACCESS+TOKEN+NOVO+2","error":"bad_request","status":400,"cause":[]}
+[06-Apr-2021 11:46:46 America/Fortaleza] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[06-Apr-2021 11:46:46 America/Fortaleza] PHP Warning:  Module 'SourceGuardian' already loaded in Unknown on line 0
+[06-Apr-2021 11:46:46 America/Fortaleza] PHP Fatal error:  Class 'MercadoPago\Entity' not found in /home1/collecti/clinicapacem.com.br/lib/vendor/mercadopago/dx-php/src/MercadoPago/SDK.php on line 35

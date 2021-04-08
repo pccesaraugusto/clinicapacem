@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "mercadopago/dx-php": "1.9.0"
+        "mercadopago/dx-php": "1.8.1"
     }
 }
