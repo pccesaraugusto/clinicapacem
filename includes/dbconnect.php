@@ -2,21 +2,21 @@
 						error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
 
 						#configuraçoes de producao
-						$db_host = 'br902.hostgator.com.br'; //hostname
+						/*$db_host = 'br902.hostgator.com.br'; //hostname
 						$db_user = 'collecti_agenda'; // username
 						$db_password = 'arq_#fi1234'; // password
 						$db_name = 'collecti_agenda'; //database name
-						$baseDir = '/';
+						$baseDir = '/';*/
 						
                                                 
 						//EDIT ONLY FOLLOWING 5 LINES DESENVOLVIMENTO
-						/*$db_host = 'localhost'; //hostname
+						$db_host = 'localhost'; //hostname
 						$db_user = 'root'; // username
 						$db_password = 'pcna1966'; // password
 						$db_name = 'collecti_agenda'; //database name
 						$baseDir = '/'; // Don't change this variable if you will be using booking in the ROOT of the username.
 						// otherwise - change to $baseDir = "/directoryName/"; WITH TRAILING SLASH!
-						*/
+						
 						
 						$demo=false;
 						

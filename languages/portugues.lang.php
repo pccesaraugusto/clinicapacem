@@ -445,6 +445,19 @@
     define(SELECT_MERCADO_PAGO,"Mercado Pago");
     define(LB_OPCOES_SELECT, "Tipo de Pagamento");
     define(BTN_LOCACLIZAR_DADOS_HMG, 'Ver Dados Cadastrados');
+
+    define(LB_ID_TAB_PIX,'ID');
+    define(LB_CHAVE_TB_PIX, 'Chave');
+    define(LB_ATIVA_TB_PIX, 'Ativa');
+    define(LB_ACOES_TB_PIX, 'Ação');
+    define(NAO_EXITE_REGISTRO_CADASTRADO, 'Atenção! Não existe registro cadastrado atualmente na sua base de dados.');
+    define(BTN_SALVAR_CHAVE_PIX, 'Salvar');
+    define(BTN_INCLUIR_CHAVE_PIX, 'Novo registro');
+    define(BTN_VOLTAR_INCLUIR_CHAVE_PIX, 'Voltar p/ tela anterior');
+    define(TITLE_SUB_CHAVE_PIX, 'Informe os dados abaixo para incluir a nova chave do pix');
+    define(SUCESS_PIX_INCLUIR_CHAVE, 'Atenção! A nova chave do PIX foi cadastrada com sucesso.');
+    define(SUCESS_PIX_EXCLUIR_CHAVE, 'Atenção! A chave PIX selecionada foi excuída com sucesso.');
+    
     
     
 ?>

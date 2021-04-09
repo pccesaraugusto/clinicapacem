@@ -120,18 +120,12 @@ if ($_SESSION["logged_in"] != true) {
             reg = /[^0-9.,]/g;
             obj.value = obj.value.replace(reg, "");
         }
+
+        function setarFocusCampo1() {
+            document.getElementById("chave").focus();
+        }
     </script>
 
-    <?php
-    #busando os dados da chave do pix na base de dados
-    $sql = "SELECT a.id as id, a.chave, a.ativa
-           FROM bs_settings_chave_pix_prod as a 
-           WHERE a.id = (SELECT max(id) FROM bs_settings_chave_pix_prod)
-           AND a.ativa = 'Sim'";
-    $result = mysql_query($sql) or die("err: " . mysql_error() . $sql);
-    ?>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .link_pc {
             background-color: #1c87c9;
@@ -212,66 +206,41 @@ if ($_SESSION["logged_in"] != true) {
 
     <div id="content">
 
-        <!-- Exibe msg para o usuário -->
-        <?php
-        if (isset($_SESSION['msgSucess'])) {
-            if (strlen($_SESSION['msgSucess']) >= 5) {
-                echo $_SESSION['msgSucess'];
 
-                #limpa msg de sucesso
-                unset($_SESSION['msgSucess']);
-            }
-        }
-        ?>
-
+        <?php getMessages(); ?>
         <div class="content_block" align="center">
             <form action="controller/ManterPagamentoPIX.php" enctype="multipart/form-data" method="post" name="ff1">
-                <input type="hidden" name="acao" value="incluir">
+                <input type="hidden" name="acao" value="salvarInclusao">
                 <div class="s_center">
-                    <h2 align="center"><?php echo LB_COF_PIX_TITULO ?></h2><br>
+                    <h3 align="center"><?php echo TITLE_SUB_CHAVE_PIX; ?></h3>
                     <hr>
-                    <table class="table" width="70%">
+                    <table class="table" width="80%">
                         <thead>
                             <tr style="background-color: #4682B4; color: #FFFFFF;">
-                                <th scope="col" width="5%"><?= LB_ID_TAB_PIX ?></th>
-                                <th scope="col" width="40%"><?= LB_CHAVE_TB_PIX ?></th>
-                                <th scope="col" width="10%"><?= LB_ATIVA_TB_PIX ?></th>
-                                <th scope="col" width="15%"><?= LB_ACOES_TB_PIX ?></th>
+                                <th scope="col" width="65%"><strong style="color: red;">(*)</strong>&nbsp;<?= LB_CHAVE_TB_PIX ?></th>
+                                <th scope="col" width="15%"><strong style="color: red;">(*)</strong>&nbsp;<?= LB_ATIVA_TB_PIX ?></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            if (mysql_num_rows($result) > 0) {
-                                while ($rr = mysql_fetch_assoc($result)) {
-                            ?>
-                                    <tr align="center">
-                                        <td><?php echo $rr['id']; ?></th>
-                                        <td><?php echo $rr['chave']; ?></td>
-                                        <td><?php echo $rr['ativa']; ?></td>
-                                        <td>
-                                            <a href="<?php echo 'controller/ManterPagamentoPIX.php?acao=Excluir&id='. $rr['id'];  ?>" style="font-size:14px; color:red;"><b><i class="fa fa-trash-o">&nbsp;Excluir</i></b></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            } else {
-                                #msg de tabela vazia para o usuario 
-                                ?>
-                                <table class="table" width="70%">
-                                    <thead>
-                                        <tr style="background-color: #FFF0F5; color: red;"><br><br>
-                                            <td><?= NAO_EXITE_REGISTRO_CADASTRADO ?></td>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            <?php } ?>
+                            <tr align="center">
+                                <td><input type="text" name="chave" id="chave" value="" style=" width:500px;" required></td>
+                                <td>
+                                    <select name="ativa" id="ativa" required>
+                                        <option value="">Selecione..</option>
+                                        <option value="Nao">Não</option>
+                                        <option value="Sim">Sim</option>
+                                    </select>
+                                </td>
+                            </tr>
                         </tbody>
-                    </table><br><br>
+                    </table><br>
+                    <strong align="center" style="color: red;">Atenção! (*) - Campos de preenchimentos obrigatórios.</strong><br><br>
                     <table width="70%" border="0" align="center">
                         <thead align="center">
                             <tr>
                                 <td width="80%">
-                                    <input type="submit" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;" value="<?php echo BTN_INCLUIR_CHAVE_PIX ?>"></center>
+                                    <input type="submit" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;" value="<?php echo BTN_SALVAR_CHAVE_PIX ?>"></center>
+                                    <a href="javascript:history.back()" class="link_pc" style="background-color:#39b54a; color:#FFFFFF;"><?php echo BTN_VOLTAR_INCLUIR_CHAVE_PIX; ?></a>
                                 </td>
                             </tr>
                         </thead>
@@ -279,6 +248,11 @@ if ($_SESSION["logged_in"] != true) {
                 </div>
             </form>
         </div>
+
+        <!-- Setando o focus no campo chave quando abrir o formulario -->
+        <script>
+            setarFocusCampo1();
+        </script>
 
         <?php include "includes/admin_footer.php"; ?>
     <?php } ?>

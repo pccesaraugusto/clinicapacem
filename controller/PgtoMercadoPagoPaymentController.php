@@ -4,6 +4,11 @@ include "../includes/dbconnect.php";
 include "../includes/config.php";
 require_once "../lib/vendor/autoload.php";
 
+#pegando o valor a ser pago
+$valor = $_GET['dados'];
+$nome  = $_GET['nome'];
+$email = $_GET['email'];
+
 $token = $_REQUEST["token"];
 $payment_method_id = $_REQUEST["payment_method_id"];
 $installments = $_REQUEST["installments"];
@@ -46,14 +51,14 @@ MercadoPago\SDK::setAccessToken($datapublickey);
 //MercadoPago\SDK::setAccessToken("ACCESSE TOKEN DE PRODUCAO");
 
 $payment = new MercadoPago\Payment();
-$payment->transaction_amount = 114;
+$payment->transaction_amount = floatval($valor);
 $payment->token = $token;
-$payment->description = "Mediocre Leather Pants";
+$payment->description = " para ". $nome;
 $payment->installments = $installments;
 $payment->payment_method_id = $payment_method_id;
 $payment->issuer_id = $issuer_id;
 $payment->payer = array(
-    "email" => "empresaswgm@gmail.com"
+    "email" => $email
 );
 
 // Armazena e envia o pagamento

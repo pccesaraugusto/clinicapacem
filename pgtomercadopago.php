@@ -7,6 +7,9 @@ bw_do_action("bw_load");
 
 #pegando os dados do agendamento para exibir como detalhes
 $orderId = $_GET['orderID'];
+$nome    = $_GET['nome'];
+$email   = $_GET['email'];
+
 $datapublickey = "";
 
 #pegando o ultimo dados da configuracao do token do mercado pago de hmg
@@ -69,6 +72,11 @@ if ($price > 0) {
     $amount = ($currencyPos == 'b' ? $currency : "") . " {$price} " . ($currencyPos == 'a' ? $currency : "");
 }
 
+#retirando o R$ do valor total
+$resp = str_replace('R$ ', '', $amount);
+
+$valor = str_replace(',', '.', $resp);
+
 ?>
 
 <!doctype html>
@@ -96,14 +104,14 @@ if ($price > 0) {
             border-top-left-radius: .3125em;
             border-top-right-radius: .3125em;
             border-bottom-left-radius: .3125em;
-            border-bottom-right-radius: .3125em;
+            border-bottom-right-radius: .3125em; 
         }
     </style>
 
 </head>
 
 <body>
-    <form action="https://clinicapacem.com.br/controller/PgtoMercadoPagoPaymentController.php" method="POST">
+    <form action="https://clinicapacem.com.br/controller/PgtoMercadoPagoPaymentController.php?dados=<?php echo $valor; ?>&nome=<?php echo $nome; ?>&email=<?php echo $email; ?>" method="POST">
         <hr />
         <h2 align="center" style="background-color: #87CEEB; color: #FFFFFF;">Informações da Reserva / Mercado Pago</h2>
         <table width="25%" border="0" class='summery' align="center">

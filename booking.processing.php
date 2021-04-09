@@ -111,6 +111,7 @@ if (!$error) {
 				}
 
 				$uid = md5($email . "FtTtffT");
+				
 				$linkCancelReservation = "<a href=\"http://" . $_SERVER['SERVER_NAME'] . $baseDir . "manageReservation.php?email=" . urlencode($email) . "&uid=" . $uid . "\">link</a>";
 				##################################################################################
 				#  	4. SEND NOTICE TO ADMIN AND CUSTOMER
@@ -118,8 +119,7 @@ if (!$error) {
 
 				$subject = BEP_16 . " (#" . $orderID . ")!";
 
-				$adminMail = getAdminMail();
-
+				$adminMail = getAdminMail(); 
 				$data = array(
 					"{%name%}" => $name,
 					"{%serviceName%}" => $serviceName,
@@ -145,7 +145,8 @@ if (!$error) {
 				sendMail($email, $subject, "timeBookingConfirmationCustomer.php", $data);
 				//header("Location: thank-you.php");
 			}
-		}
+		}//-- fim do if de envio de email --//
+
 	} else {
 		//throw error
 		$msg = "<div class='error_msg'>" . BEP_17 . "</div>";
@@ -166,11 +167,11 @@ if (!$error) {
 	<!-- Teatar para exibir para a tela de detalhe do pix ou mercado pago -->
 	<?php
 		#selecionando o tipo de pagamento
-		$tipoPagamento = $_POST['tipopgto'];
+		$tipoPagamento = $_POST['tipopgto']; 
 
 		#se for mercado pago monta tela de mercado pago
 		if($tipoPagamento == "mercadopago"){
-			 header("Location: pgtomercadopago.php?orderID=". $orderID);
+			 header("Location: pgtomercadopago.php?orderID=". $orderID ."&nome=". $name ."&email=".$email);
         	 exit();
 		}
 
