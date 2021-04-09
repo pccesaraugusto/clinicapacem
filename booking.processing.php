@@ -176,9 +176,9 @@ if (!$error) {
 		}
 
 		#se for pix monta a tela de pix
-		if($tipoPagamento == "pix"){
-			header("Location: pgtopix.php?orderID=" . $orderID);
-        	 exit();
+		if($tipoPagamento == "pix"){			
+			header("Location: pgtopix.php?orderID=" . $orderID . "&nome=" . $name . "&email=" . $email."&amount=". number_format(($qty * $price_per_spot * count($bookingData)) + $tax, 2));
+        	exit();
 		}
 	?>
 	

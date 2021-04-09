@@ -6,9 +6,14 @@ namespace Composer\Autoload;
 
 class ComposerStaticInite26bc5f93aa362586b1e5827a3876b84
 {
+    public static $files = array (
+        '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'M' => 
         array (
+            'Mpdf\\QrCode\\' => 12,
             'MercadoPago\\' => 12,
         ),
         'D' => 
@@ -21,6 +26,10 @@ class ComposerStaticInite26bc5f93aa362586b1e5827a3876b84
     );
 
     public static $prefixDirsPsr4 = array (
+        'Mpdf\\QrCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/qrcode/src',
+        ),
         'MercadoPago\\' => 
         array (
             0 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago',

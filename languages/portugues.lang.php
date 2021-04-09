@@ -457,7 +457,7 @@
     define(TITLE_SUB_CHAVE_PIX, 'Informe os dados abaixo para incluir a nova chave do pix');
     define(SUCESS_PIX_INCLUIR_CHAVE, 'Atenção! A nova chave do PIX foi cadastrada com sucesso.');
     define(SUCESS_PIX_EXCLUIR_CHAVE, 'Atenção! A chave PIX selecionada foi excuída com sucesso.');
-    
+    define(BTN_SAIR_PGTO_PIX, 'Sair');
     
     
 ?>
